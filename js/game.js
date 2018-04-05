@@ -4,8 +4,8 @@ function resetGame(){
     game_data.player['score'] = 0;
 }
 
-function checkEndGame(){
-    return false;
+function gameOver(){
+    game_data.state['game_over'] = true;
 }
 
 function endGame(){

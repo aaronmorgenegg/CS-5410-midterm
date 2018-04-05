@@ -12,6 +12,10 @@ CELL_WIDTH = Math.floor(GAME_WIDTH/GRID_WIDTH);
 CELL_HEIGHT = Math.floor(GAME_HEIGHT/GRID_HEIGHT);
 NUM_OBSTACLES = 10;
 NUM_FOOD = 1;
+FOOD_GROWTH_FACTOR = 3;
+FOOD_POINTS = 3;
+STARTING_LENGTH = 1;
+SNAKE_UPDATE_RATE = 50; // Speed at which snake moves and is updated
 
 // Rendering options
 

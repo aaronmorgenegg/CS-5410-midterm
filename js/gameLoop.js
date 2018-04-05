@@ -10,15 +10,13 @@ function initialize(){
             'current':0,
             'elapsed':0,
             'running':0,
+            'snake': SNAKE_UPDATE_RATE,
             'countdown': 3000
         },
         'player':{
             'input': [],
-            'score': 0
-        },
-        'snake':{
-            'direction':'right',
-            'length': 3
+            'score': 0,
+            'direction': ''
         },
         'map': getMap(),
         'options':{
@@ -28,13 +26,15 @@ function initialize(){
             'credits': false
         },
         'state': {
-            'game_over': false
+            'game_over': false,
+            'growth_queue': 0
         },
         'high_scores': loadHighScores(),
         'controls': loadControls(),
         'canvas': canvas,
         'context': context
     };
+    game_data.snake = getSnake();
 
     document.addEventListener('keydown', onKeyDown);
     document.addEventListener("mousedown", onMouseClick, false);
@@ -50,13 +50,12 @@ function processInput(){
 }
 
 function update(){
-    game_data.state['game_over'] = checkEndGame();
     if(!game_data.state['game_over']) {
         if (!game_data.options['menu']) {
             updateCountdown();
         }
         if (!game_data.options['paused']) {
-
+            updateSnake();
         }
     }
 }

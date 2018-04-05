@@ -91,6 +91,9 @@ function renderCell(cell, x, y){
     } else if(cell==='food'){
         color = ORANGE_COLOR;
         stroke = ORANGE_COLOR;
+    } else if(cell==='snake'){
+        color = WHITE_COLOR;
+        stroke = BLACK_COLOR;
     }
 
     drawRectangle(context,

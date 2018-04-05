@@ -20,26 +20,26 @@ function handleKeyToken(e, token){
 }
 
 function upInputToken(){
-    if(game_data.snake['direction'] !== 'down'){
-        game_data.snake['direction'] = 'up';
+    if(game_data.player['direction'] !== 'down'){
+        game_data.player['direction'] = 'up';
     }
 }
 
 function rightInputToken(){
-    if(game_data.snake['direction'] !== 'left'){
-        game_data.snake['direction'] = 'right';
+    if(game_data.player['direction'] !== 'left'){
+        game_data.player['direction'] = 'right';
     }
 }
 
 function downInputToken(){
-    if(game_data.snake['direction'] !== 'up'){
-        game_data.snake['direction'] = 'down';
+    if(game_data.player['direction'] !== 'up'){
+        game_data.player['direction'] = 'down';
     }
 }
 
 function leftInputToken(){
-    if(game_data.snake['direction'] !== 'right'){
-        game_data.snake['direction'] = 'left';
+    if(game_data.player['direction'] !== 'right'){
+        game_data.player['direction'] = 'left';
     }
 }
 
