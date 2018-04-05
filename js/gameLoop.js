@@ -4,43 +4,35 @@ function initialize(){
     // Initializes the textures, options, and calls gameLoop
     canvas = document.getElementById('canvas_main');
     context = canvas.getContext('2d');
-    background_game = document.getElementById("img-background_game");
-    background_menu = document.getElementById("img-background_menu");
+    background = document.getElementById("img-background");
     game_data = {
         'time':{
             'previous':performance.now(),
             'current':0,
             'elapsed':0,
             'running':0,
-            'countdown': 0
+            'countdown': 3000
         },
         'textures':{
-            'background_game': background_game,
-            'background_menu': background_menu
+            'background': background
         },
         'player':{
             'input': [],
-            'lives': STARTING_LIVES,
-            'money': STARTING_MONEY,
             'score': 0
         },
         'options':{
-            'show_radius': true,
-            'show_grid': false,
-            'show_path': false,
-            'mute': false
+            'paused': true,
+            'menu': false,
+            'high_scores': false,
+            'credits': false
         },
-        'menu':{
-            'state': 'game',
-            'buttons': getgameMenuButtons(),
-            'rebind': ''
+        'state': {
+            'game_over': false
         },
-        'map': getBaseMap(),
         'high_scores': loadHighScores(),
         'controls': loadControls(),
         'canvas': canvas,
-        'context': context,
-        'particles': []
+        'context': context
     };
 
     document.addEventListener('keydown', onKeyDown);
@@ -50,7 +42,6 @@ function initialize(){
 }
 
 function processInput(){
-    rebindKeys();
     for(i = 0; i < game_data.player['input'].length; i++){
         window[game_data.player['input'][i] + "InputToken"]();
     }
@@ -58,13 +49,29 @@ function processInput(){
 }
 
 function update(){
-
+    game_data.state['game_over'] = checkEndGame();
+    if(!game_data.state['game_over']) {
+        if (!game_data.options['menu']) {
+            updateCountdown();
+        }
+        if (!game_data.options['paused']) {
+            
+        }
+    }
 }
 
 function render(){
     renderBackground();
-    renderMenu();
-    renderMap();
+    if(game_data.options['credits']){
+        renderCredits();
+    } else if(game_data.options['high_scores']) {
+        renderHighScores();
+    } else if(game_data.options['menu']) {
+        renderMenu();
+    } else {
+        if(!game_data.state['game_over']) renderCountdown();
+        if(game_data.state['game_over']) renderGameOver();
+    }
 }
 
 function gameLoop(){

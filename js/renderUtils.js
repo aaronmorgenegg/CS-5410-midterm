@@ -43,19 +43,10 @@ function renderBackground() {
 
     // menu background
     context.drawImage(
-        img = game_data.textures['background_menu'],
+        img = game_data.textures['background'],
         x = 0,
         y = 0,
-        width = MENU_WIDTH,
-        height = MENU_HEIGHT
-    );
-
-    // game background
-    context.drawImage(
-        img = game_data.textures['background_game'],
-        x = MENU_WIDTH,
-        y = 0,
-        width = GAME_WIDTH - MENU_WIDTH,
+        width = GAME_WIDTH,
         height = GAME_HEIGHT
     );
 }
@@ -65,4 +56,16 @@ function getRandomColor(){
     g = Math.floor(Math.random() * 255);
     b = Math.floor(Math.random() * 255);
     return 'rgba('+r+', '+g+', '+b+', 1)'
+}
+
+function renderGameOver(){
+    canvas = game_data['canvas'];
+    context = game_data['context'];
+    context.font=GAME_OVER_FONT;
+    context.textAlign = 'center';
+    x = canvas.width/2;
+    y = canvas.height/2 - 100;
+    context.fillStyle = GAME_OVER_COLOR;
+    context.fillText("GAME", x, y);
+    context.fillText("OVER", x, y+200);
 }
