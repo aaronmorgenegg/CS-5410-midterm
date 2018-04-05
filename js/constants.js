@@ -8,8 +8,8 @@ GAME_HEIGHT = 1000; // Note that you'll have to change the canvas size in index.
 KEY_TOKENS = {'up': 38, 'right': 39, 'down': 40, 'left': 37, 'exit': 27};
 GRID_WIDTH = 50;
 GRID_HEIGHT = 50;
-CELL_WIDTH = GRID_WIDTH/GAME_WIDTH;
-CELL_HEIGHT = GRID_HEIGHT/GAME_HEIGHT;
+CELL_WIDTH = Math.floor(GAME_WIDTH/GRID_WIDTH);
+CELL_HEIGHT = Math.floor(GAME_HEIGHT/GRID_HEIGHT);
 NUM_OBSTACLES = 10;
 NUM_FOOD = 1;
 
@@ -30,4 +30,4 @@ MENU_BUTTON_STROKE = 'rgba(25, 25, 25, 1)';
 SCORE_FONT = '30px Arial';
 SCORE_COLOR = 'rgba(255, 255, 255, 1)';
 COUNTDOWN_FONT = '175px Arial';
-COUNTDOWN_COLOR = 'rgba(155, 100, 200, 1)';
+COUNTDOWN_COLOR = 'rgba(255, 255, 255, .5)';

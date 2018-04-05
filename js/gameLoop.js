@@ -4,7 +4,6 @@ function initialize(){
     // Initializes the textures, options, and calls gameLoop
     canvas = document.getElementById('canvas_main');
     context = canvas.getContext('2d');
-    background = document.getElementById("img-background");
     game_data = {
         'time':{
             'previous':performance.now(),
@@ -12,9 +11,6 @@ function initialize(){
             'elapsed':0,
             'running':0,
             'countdown': 3000
-        },
-        'textures':{
-            'background': background
         },
         'player':{
             'input': [],

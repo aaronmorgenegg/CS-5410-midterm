@@ -42,12 +42,15 @@ function renderBackground() {
     context = game_data['context'];
 
     // menu background
-    context.drawImage(
-        img = game_data.textures['background'],
-        x = 0,
-        y = 0,
-        width = GAME_WIDTH,
-        height = GAME_HEIGHT
+    drawRectangle(context,
+        {
+            x: 0,
+            y: 0,
+            width: GAME_WIDTH,
+            height: GAME_HEIGHT,
+            fill: BLUE_COLOR,
+            stroke: BLUE_COLOR
+        }
     );
 }
 

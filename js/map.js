@@ -67,16 +67,21 @@ function getWallCell(){
 function renderMap(){
     for(i = 0; i < GRID_HEIGHT; i++){
         for(j = 0; j < GRID_WIDTH; j++){
-            x = j/GAME_WIDTH;
-            y = i/GAME_HEIGHT;
-            renderCell(map[i][j], x, y);
+            if(map[i][j] !== '') {
+                x = (j / GRID_WIDTH) * GAME_HEIGHT;
+                y = (i / GRID_HEIGHT) * GAME_HEIGHT;
+                renderCell(map[i][j], x, y);
+            }
         }
     }
 }
 
 function renderCell(cell, x, y){
+    canvas = game_data.canvas;
     context = game_data.context;
 
+    color = BLUE_COLOR;
+    stroke = BLUE_COLOR;
     if(cell===getWallCell()){
         color = RED_COLOR;
         stroke = RED_COLOR;
@@ -86,9 +91,6 @@ function renderCell(cell, x, y){
     } else if(cell==='food'){
         color = ORANGE_COLOR;
         stroke = ORANGE_COLOR;
-    } else if(cell === getEmptyCell()){
-        color = BLUE_COLOR;
-        stroke = BLUE_COLOR;
     }
 
     drawRectangle(context,
