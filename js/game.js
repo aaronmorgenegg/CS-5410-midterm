@@ -12,3 +12,4 @@ function endGame(){
     saveHighScores();
     window.close();
 }
+

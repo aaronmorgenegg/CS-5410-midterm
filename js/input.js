@@ -1,14 +1,5 @@
 function loadControls(){
-    controls = localStorage['controls'];
-    if(controls !== undefined){
-        return JSON.parse(controls);
-    } else{
-        return {'up': 38, 'right': 39, 'down': 40, 'left': 37, 'menu': 27};
-    }
-}
-
-function saveControls(){
-    localStorage['controls'] = JSON.stringify(game_data['controls']);
+    return KEY_TOKENS;
 }
 
 function keyToChar(key){
@@ -17,14 +8,50 @@ function keyToChar(key){
 }
 
 function onKeyDown(e) {
-    for(i = 0; i < KEY_TOKENS.length; i++){
-        handleKeyToken(e, KEY_TOKENS[i]);
+    for(key in KEY_TOKENS){
+        handleKeyToken(e, key);
     }
 }
 
 function handleKeyToken(e, token){
     if (e.keyCode === game_data.controls[token] && game_data.player['input'][game_data.player['input'].length-1] !== token) {
         game_data.player['input'].push(token);
+    }
+}
+
+function upInputToken(){
+    if(game_data.snake['direction'] !== 'down'){
+        game_data.snake['direction'] = 'up';
+    }
+}
+
+function rightInputToken(){
+    if(game_data.snake['direction'] !== 'left'){
+        game_data.snake['direction'] = 'right';
+    }
+}
+
+function downInputToken(){
+    if(game_data.snake['direction'] !== 'up'){
+        game_data.snake['direction'] = 'down';
+    }
+}
+
+function leftInputToken(){
+    if(game_data.snake['direction'] !== 'right'){
+        game_data.snake['direction'] = 'left';
+    }
+}
+
+function exitInputToken(){
+    if(game_data.options['high_scores'] || game_data.options['credits']){
+        game_data.options['high_scores'] = false;
+        game_data.options['credits'] = false;
+    }
+    else if(game_data.options['menu']){
+        exitMenuButton();
+    } else {
+        enterMenu();
     }
 }
 

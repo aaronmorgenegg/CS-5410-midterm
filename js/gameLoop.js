@@ -20,6 +20,11 @@ function initialize(){
             'input': [],
             'score': 0
         },
+        'snake':{
+            'direction':'right',
+            'length': 3
+        },
+        'map': getMap(),
         'options':{
             'paused': true,
             'menu': false,
@@ -55,7 +60,7 @@ function update(){
             updateCountdown();
         }
         if (!game_data.options['paused']) {
-            
+
         }
     }
 }
@@ -69,6 +74,7 @@ function render(){
     } else if(game_data.options['menu']) {
         renderMenu();
     } else {
+        renderMap();
         if(!game_data.state['game_over']) renderCountdown();
         if(game_data.state['game_over']) renderGameOver();
     }
