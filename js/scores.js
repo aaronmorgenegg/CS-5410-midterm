@@ -19,3 +19,15 @@ function saveHighScores(){
     game_data['high_scores'] = game_data['high_scores'].slice(0, 5);
     localStorage['high_scores'] = JSON.stringify(game_data['high_scores']);
 }
+
+function renderScore(){
+    canvas = game_data['canvas'];
+    context = game_data['context'];
+    context.font=SCORE_FONT;
+    context.textAlign = 'left';
+    x = 10;
+    y = canvas.height;
+    context.fillStyle = SCORE_COLOR;
+    context.fillText(game_data['player']['score'], x, y-5);
+}
+

@@ -14,8 +14,8 @@ function initialize(){
             'countdown': 3000
         },
         'player':{
-            'input': [],
-            'score': 0,
+            'input': '',
+            'score': 1,
             'direction': ''
         },
         'map': getMap(),
@@ -43,9 +43,8 @@ function initialize(){
 }
 
 function processInput(){
-    for(i = 0; i < game_data.player['input'].length; i++){
-        window[game_data.player['input'][i] + "InputToken"]();
-    }
+    if(game_data.player['input'] !== '') window[game_data.player['input'] + "InputToken"]();
+
     resetInput();
 }
 
@@ -70,6 +69,7 @@ function render(){
         renderMenu();
     } else {
         renderMap();
+        renderScore();
         if(!game_data.state['game_over']) renderCountdown();
         if(game_data.state['game_over']) renderGameOver();
     }

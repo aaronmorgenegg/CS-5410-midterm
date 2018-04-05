@@ -87,10 +87,10 @@ function renderCell(cell, x, y){
         stroke = RED_COLOR;
     } else if(cell==='block'){
         color = GREEN_COLOR;
-        stroke = GREEN_COLOR;
+        stroke = BLACK_COLOR;
     } else if(cell==='food'){
         color = ORANGE_COLOR;
-        stroke = ORANGE_COLOR;
+        stroke = BLACK_COLOR;
     } else if(cell==='snake'){
         color = WHITE_COLOR;
         stroke = BLACK_COLOR;

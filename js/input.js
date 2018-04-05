@@ -14,8 +14,8 @@ function onKeyDown(e) {
 }
 
 function handleKeyToken(e, token){
-    if (e.keyCode === game_data.controls[token] && game_data.player['input'][game_data.player['input'].length-1] !== token) {
-        game_data.player['input'].push(token);
+    if (e.keyCode === game_data.controls[token]) {
+        game_data.player['input'] = token;
     }
 }
 
@@ -56,5 +56,5 @@ function exitInputToken(){
 }
 
 function resetInput(){
-    game_data.player['input'] = [];
+    game_data.player['input'] = '';
 }

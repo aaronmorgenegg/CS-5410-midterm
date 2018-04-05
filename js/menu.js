@@ -80,8 +80,6 @@ function onMouseClick(){
         highScoresButton();
     } else if(mouseInRange(x, y, button_min_x, button_max_x, 500, 550)){ // credits button
         creditsButton();
-    } else if(mouseInRange(x, y, button_min_x, button_max_x, 600, 650)){ // exit menu button
-        exitMenuButton();
     } else if(mouseInRange(x, y, button_min_x, button_max_x, high_scores_button_y, high_scores_button_y + 50) && game_data.options['high_scores']){ // reset high scores button
         resetHighScores();
     }
@@ -139,5 +137,4 @@ function renderMenu(){
     renderMenuButton({msg:'New Game', y:300});
     renderMenuButton({msg:'High Scores', y:400});
     renderMenuButton({msg:'Credits', y:500});
-    renderMenuButton({msg:'Exit Menu', y:600});
 }
